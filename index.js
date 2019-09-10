@@ -518,10 +518,20 @@ exports.connect = function(config, intern, callback) {
       host = parseObjects(config, port, length);
   } else {
 
-    host = config.host + ':' + port;
+    if (config.port === undefined && config.useSrvRecord !== undefined && String(config.useSrvRecord) == 'true') {
+      host = config.host; // default srv
+    } else {
+      host = config.host + ':' + port;
+    }
   }
 
-  var mongoString = 'mongodb://';
+  var mongoString;
+
+  if (config.useSrvRecord !== undefined && String(config.useSrvRecord) == 'true') {
+    mongoString = 'mongodb+srv://';
+  } else {
+    mongoString = 'mongodb://';
+  }
 
   if(config.user !== undefined && config.password !== undefined) {
     // Ensure user and password can contain special characters like "@" so app doesn't throw an exception when connecting to MongoDB
@@ -550,7 +560,5 @@ exports.connect = function(config, intern, callback) {
       mongoString += '?' + extraParams.join('&');
   }
 
-
-  db = config.db || new MongoClient(new Server(host, port));
-  callback(null, new MongodbDriver(db, intern, mongoString));
+  callback(null, new MongodbDriver(undefined, intern, mongoString));
 };

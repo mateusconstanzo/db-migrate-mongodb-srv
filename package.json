@@ -1,5 +1,5 @@
 {
-  "name": "db-migrate-mongodb",
+  "name": "db-migrate-mongodb-srv",
   "version": "1.5.0",
   "description": "mongodb driver for db-migrate",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/db-migrate/mongodb.git"
+    "url": "https://github.com/mateusconstanzo/db-migrate-mongodb-srv.git"
   },
   "keywords": [
     "db-migrate",
@@ -18,7 +18,7 @@
     "migration",
     "driver"
   ],
-  "author": "Tobias Gurtzick <magic@wizardtales.com>",
+  "author": "Mateus Constanzo <mateusconstanzo@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/db-migrate/mongodb/issues"
@@ -32,6 +32,6 @@
   "devDependencies": {
     "db-meta": "^0.4.1",
     "db-migrate-shared": "^1.1.2",
-    "vows": "0.8.0"
+    "vows": "0.8.2"
   }
 }
